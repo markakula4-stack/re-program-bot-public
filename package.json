@@ -1,0 +1,14 @@
+{
+  "name": "re-program-bot",
+  "version": "1.4.4-audit.1",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=24 <25"},
+  "scripts": {
+    "setup:tests": "node scripts/bootstrap-test-tools.mjs",
+    "test": "node scripts/public-test-runner.mjs",
+    "build": "node scripts/build-public.mjs",
+    "check:assets": "node scripts/v1.4.0-rebuild-build-assets.mjs --check"
+  },
+  "devDependencies": {"esbuild": "0.25.12", "linkedom": "0.18.12", "playwright": "1.62.1"}
+}

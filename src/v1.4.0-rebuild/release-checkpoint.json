@@ -1,0 +1,14 @@
+{
+  "checkpointVersion": 1,
+  "candidateSha": "5c5009a71c077257492be2210e890cddbfda4616",
+  "leaseCandidateSha": "7984e486bb3fae1160950c08701872bd0a1be57b",
+  "workerVersionId": "f8b23b6d-f27b-471f-ba72-477a4bdfcac1",
+  "uploadedBundleSha256": "40e08303d9fc9ce39ef40e3f99d9ee1d24618882be10e02b78971765c6489d24",
+  "applicationDdlSha256": "94d1c63b9eee512ffb354ec1f6c6cdbd002d0bac95b3d65bd7bcf4c5550414d3",
+  "acceptedProductionBase": "cf070ea90a7f2ad079d167473ae410b006f50323",
+  "closeRunId": 36899091006,
+  "requestCommit": "43f3825b5d6bbdc8952e9fbeb652cbf3f39661cb",
+  "releaseRevision": 24,
+  "artifactId": 11181251814,
+  "artifactSha256": "0ab287b27355b27cd15712acfab29ffc22cd5a8b822128dc4d1037d30885bb92"
+}

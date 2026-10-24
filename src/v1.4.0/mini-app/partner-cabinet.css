@@ -1,0 +1,227 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: var(--tg-theme-text-color, #e8eef8);
+  background: var(--tg-theme-bg-color, #0f172a);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+html { min-width: 320px; background: var(--tg-theme-bg-color, #0f172a); }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 92% 0%, color-mix(in srgb, var(--tg-theme-link-color, #38bdf8) 18%, transparent), transparent 38%),
+    var(--tg-theme-bg-color, #0f172a);
+}
+
+button { font: inherit; }
+
+.app {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding:
+    calc(16px + env(safe-area-inset-top))
+    max(14px, env(safe-area-inset-right))
+    calc(26px + env(safe-area-inset-bottom))
+    max(14px, env(safe-area-inset-left));
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 4px 2px 14px;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  color: var(--tg-theme-link-color, #38bdf8);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+h1 { margin: 0; font-size: clamp(1.45rem, 6vw, 2rem); line-height: 1.15; }
+h2 { margin: 0; font-size: 1.08rem; }
+h3 { margin: 0; font-size: .96rem; }
+p { line-height: 1.45; }
+
+.live-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 6px color-mix(in srgb, #34d399 15%, transparent);
+}
+
+.banner {
+  margin: 0 0 12px;
+  padding: 11px 13px;
+  border: 1px solid color-mix(in srgb, #f59e0b 45%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, #f59e0b 14%, var(--tg-theme-bg-color, #0f172a));
+  font-size: .82rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 7px;
+  margin: 0 -1px 14px;
+  padding: 2px 1px 7px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar { display: none; }
+
+.tabs button,
+.more,
+.application-link {
+  min-height: 44px;
+  border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #94a3b8) 24%, transparent);
+  border-radius: 13px;
+  color: var(--tg-theme-text-color, #e8eef8);
+  background: var(--tg-theme-secondary-bg-color, #172033);
+  cursor: pointer;
+}
+
+.tabs button {
+  flex: 0 0 auto;
+  padding: 9px 13px;
+  font-size: .82rem;
+  font-weight: 750;
+}
+
+.tabs button[aria-current="page"] {
+  border-color: var(--tg-theme-button-color, #0ea5e9);
+  color: var(--tg-theme-button-text-color, #fff);
+  background: var(--tg-theme-button-color, #0ea5e9);
+}
+
+button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--tg-theme-link-color, #38bdf8) 55%, white);
+  outline-offset: 2px;
+}
+
+.screen { display: grid; gap: 11px; }
+
+.card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #94a3b8) 18%, transparent);
+  border-radius: 18px;
+  background: var(--tg-theme-section-bg-color, var(--tg-theme-secondary-bg-color, #172033));
+  box-shadow: 0 12px 30px rgb(0 0 0 / 8%);
+}
+
+.card-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 11px;
+}
+
+.muted,
+.status,
+.meta { color: var(--tg-theme-subtitle-text-color, var(--tg-theme-hint-color, #94a3b8)); }
+
+.muted { margin: 5px 0 0; font-size: .83rem; }
+.meta { margin: 8px 0 0; font-size: .76rem; overflow-wrap: anywhere; }
+
+.badge {
+  flex: 0 0 auto;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--tg-theme-link-color, #38bdf8);
+  background: color-mix(in srgb, var(--tg-theme-link-color, #38bdf8) 13%, transparent);
+  font-size: .7rem;
+  font-weight: 800;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.metric {
+  padding: 14px 10px;
+  border-radius: 15px;
+  text-align: center;
+  background: var(--tg-theme-secondary-bg-color, #111a2c);
+}
+
+.metric strong { display: block; font-size: 1.25rem; }
+.metric span { font-size: .7rem; color: var(--tg-theme-hint-color, #94a3b8); }
+
+.rows { display: grid; gap: 0; }
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 0;
+  border-top: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #94a3b8) 15%, transparent);
+  font-size: .83rem;
+}
+
+.row:first-child { border-top: 0; padding-top: 0; }
+.row:last-child { padding-bottom: 0; }
+.row span { color: var(--tg-theme-hint-color, #94a3b8); }
+.row strong { text-align: right; overflow-wrap: anywhere; }
+
+.description { margin: 9px 0 0; font-size: .84rem; color: var(--tg-theme-subtitle-text-color, #a8b4c7); }
+
+.more,
+.application-link {
+  width: 100%;
+  padding: 11px 14px;
+  font-weight: 750;
+}
+
+.application-link { margin-top: 12px; }
+
+.empty {
+  padding: 30px 18px;
+  border: 1px dashed color-mix(in srgb, var(--tg-theme-hint-color, #94a3b8) 35%, transparent);
+  border-radius: 18px;
+  text-align: center;
+  color: var(--tg-theme-hint-color, #94a3b8);
+}
+
+.status { min-height: 20px; margin: 13px 2px 0; text-align: center; font-size: .76rem; }
+
+.skeleton {
+  height: 90px;
+  border-radius: 18px;
+  background: linear-gradient(100deg, var(--tg-theme-secondary-bg-color, #172033) 30%, color-mix(in srgb, var(--tg-theme-hint-color, #94a3b8) 13%, transparent) 48%, var(--tg-theme-secondary-bg-color, #172033) 66%);
+  background-size: 220% 100%;
+  animation: shimmer 1.3s linear infinite;
+}
+
+.skeleton.tall { height: 145px; }
+
+@keyframes shimmer { to { background-position-x: -220%; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
+
+@media (max-width: 360px) {
+  .app { padding-left: 10px; padding-right: 10px; }
+  .card { padding: 14px; }
+  .metrics { grid-template-columns: 1fr; }
+  .metric { display: flex; align-items: baseline; justify-content: space-between; text-align: left; }
+}
+
+@media (prefers-contrast: more) {
+  .card, .tabs button, .more, .application-link { border-width: 2px; }
+}

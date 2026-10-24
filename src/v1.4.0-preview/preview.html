@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0f172a">
+<title>RE Program · Кабинет партнёра · UI Lab</title>
+<script src="https://telegram.org/js/telegram-web-app.js?63"></script>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--bg:#0f172a;--secondary:#172033;--text:#e8eef8;--hint:#94a3b8;--subtitle:#a8b4c7;--link:#38bdf8;--button:#0ea5e9;color:var(--text);background:var(--bg);font-synthesis:none;text-rendering:optimizeLegibility}*{box-sizing:border-box}html{min-width:320px;background:var(--bg)}body{min-height:100vh;margin:0;background:radial-gradient(circle at 92% 0%,rgb(56 189 248/.18),transparent 38%),var(--bg)}button{font:inherit}.app{width:min(100%,720px);margin:auto;padding:calc(16px + env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) calc(26px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left))}.note{margin:0 0 14px;padding:12px 14px;border:1px solid rgb(245 158 11/.45);border-radius:14px;background:rgb(245 158 11/.13);font-size:.8rem;line-height:1.45}.hero{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:4px 2px 14px}.eyebrow{margin:0 0 5px;color:var(--link);font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}h1{margin:0;font-size:clamp(1.45rem,6vw,2rem);line-height:1.15}h2{margin:0;font-size:1.08rem}p{line-height:1.45}.dot{width:11px;height:11px;border-radius:50%;background:#34d399;box-shadow:0 0 0 6px rgb(52 211 153/.15)}.tabs{display:flex;gap:7px;margin:0 -1px 14px;padding:2px 1px 7px;overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tabs button,.open{min-height:44px;border:1px solid rgb(148 163 184/.24);border-radius:13px;color:var(--text);background:var(--secondary);cursor:pointer}.tabs button{flex:0 0 auto;padding:9px 13px;font-size:.82rem;font-weight:750}.tabs button[aria-current="page"]{border-color:var(--button);color:#fff;background:var(--button)}button:focus-visible{outline:3px solid rgb(56 189 248/.65);outline-offset:2px}.screen{display:grid;gap:11px}.card{min-width:0;padding:16px;border:1px solid rgb(148 163 184/.18);border-radius:18px;background:var(--secondary);box-shadow:0 12px 30px rgb(0 0 0/.08)}.head{display:flex;align-items:start;justify-content:space-between;gap:12px;margin-bottom:11px}.muted,.status{color:var(--subtitle)}.muted{margin:5px 0 0;font-size:.83rem}.badge{flex:0 0 auto;padding:5px 8px;border-radius:999px;color:var(--link);background:rgb(56 189 248/.13);font-size:.7rem;font-weight:800}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.metric{padding:14px 10px;border-radius:15px;text-align:center;background:#111a2c}.metric strong{display:block;font-size:1.25rem}.metric span{font-size:.7rem;color:var(--hint)}.rows{display:grid}.row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgb(148 163 184/.15);font-size:.83rem}.row:first-child{border-top:0;padding-top:0}.row:last-child{padding-bottom:0}.row span{color:var(--hint)}.row strong{text-align:right;overflow-wrap:anywhere}.desc{margin:9px 0 0;font-size:.84rem;color:var(--subtitle)}.open{width:100%;margin-top:12px;padding:11px 14px;font-weight:750}.status{min-height:20px;margin:13px 2px 0;text-align:center;font-size:.76rem}.empty{padding:30px 18px;border:1px dashed rgb(148 163 184/.35);border-radius:18px;text-align:center;color:var(--hint)}@media(max-width:360px){.app{padding-left:10px;padding-right:10px}.card{padding:14px}.metrics{grid-template-columns:1fr}.metric{display:flex;align-items:baseline;justify-content:space-between;text-align:left}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+<div class="note"><strong>Аварийный UI Lab v1.4.0.</strong> Отдельный безопасный стенд на вымышленных данных. Он не подключён к основному Worker или D1 и ничего не может изменить.</div>
+<header class="hero"><div><p class="eyebrow">RE Program · v1.4.0</p><h1>Кабинет партнёра</h1></div><span class="dot" aria-label="Изолированный стенд"></span></header>
+<nav class="tabs" aria-label="Разделы кабинета">
+<button type="button" data-screen="home" aria-current="page">Обзор</button>
+<button type="button" data-screen="profile">Профиль</button>
+<button type="button" data-screen="offers">Офферы</button>
+<button type="button" data-screen="applications">Заявки</button>
+<button type="button" data-screen="results">Результаты</button>
+</nav>
+<section id="screen" class="screen" aria-live="polite"></section>
+<p id="status" class="status">UI Lab · демо-данные · действия отключены</p>
+</main>
+<script>
+const card=(title,sub,badge,body,button='')=>`<article class="card"><div class="head"><div><h2>${title}</h2><p class="muted">${sub}</p></div><span class="badge">${badge}</span></div>${body}${button}</article>`;
+const rows=(items)=>`<div class="rows">${items.map(([a,b])=>`<div class="row"><span>${a}</span><strong>${b}</strong></div>`).join('')}</div>`;
+const data={
+home:card('Ваш доступ','Professional','50%',rows([['Специализация','Банковские продукты'],['Юридический профиль','Самозанятый'],['Доступ','active'],['Активных заявок до','25'],['Действует до','14 октября 2026']]))+`<section class="metrics"><div class="metric"><strong>4</strong><span>офферов</span></div><div class="metric"><strong>7</strong><span>активных заявок</span></div><div class="metric"><strong>3</strong><span>результатов</span></div></section>`,
+profile:card('Профиль','Professional','50%',rows([['Партнёрский ID','RE-4821'],['Системная роль','partner'],['Юридический профиль','self_employed'],['Тариф','professional'],['Состояние доступа','active']])),
+offers:card('Дебетовая карта','Банк · CARD-01','approved',`<p class="desc">Публичная approved-версия оффера с проверенными условиями.</p>${rows([['Категория','Карты'],['Видимость','public'],['Выплата','до 3 000 ₽'],['Медиа','2']])}`)+card('Расчётный счёт','Банк · RKO-02','pending',`<p class="desc">Черновик отправлен на ручную модерацию.</p>${rows([['Категория','РКО'],['Видимость','private'],['Выплата','до 5 000 ₽'],['Медиа','1']])}`),
+applications:card('CARD-01','qualified','active',rows([['Статус','qualified'],['Результат','Без результата'],['Создана','14 сентября, 19:45']]),'<button class="open" type="button" data-detail="1">Открыть заявку</button>')+card('RKO-02','new','active',rows([['Статус','new'],['Результат','Без результата'],['Создана','13 сентября, 14:10']]),'<button class="open" type="button" data-detail="2">Открыть заявку</button>'),
+results:card('CARD-01','approved','closed',rows([['Статус','completed'],['Результат','approved'],['Создана','10 сентября, 11:20']]))+card('CARD-03','rejected','closed',rows([['Статус','closed'],['Результат','rejected'],['Создана','8 сентября, 17:05']]))
+};
+const screen=document.getElementById('screen');const tabs=[...document.querySelectorAll('[data-screen]')];
+function show(name){screen.innerHTML=data[name]||'<div class="empty">Здесь пока ничего нет</div>';tabs.forEach(b=>b.toggleAttribute('aria-current',b.dataset.screen===name));screen.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>{screen.innerHTML=card('Заявка CARD-01','qualified','read-only',rows([['ID','app_demo_01'],['Статус','qualified'],['Ревизия','3'],['Контакт','+7 ••• •••-12-34'],['Результат','—']])+`<p class="desc">Заметка: клиент ожидает подтверждение банка.</p>`);tabs.forEach(x=>x.removeAttribute('aria-current'));}));}
+tabs.forEach(b=>b.addEventListener('click',()=>show(b.dataset.screen)));show('home');
+const tg=window.Telegram&&window.Telegram.WebApp;if(tg){try{tg.ready();tg.expand();tg.setHeaderColor('secondary_bg_color');tg.setBackgroundColor('bg_color');document.getElementById('status').textContent='Открыто внутри Telegram · UI Lab · действия отключены';}catch(_){}}
+</script>
+</body>
+</html>

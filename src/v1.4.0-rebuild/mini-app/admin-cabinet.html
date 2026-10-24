@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru" data-launch-state="loading" data-color-theme="light" data-theme-mode="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="light dark">
+  <title>Пульт владельца · RE Program</title>
+  <link rel="stylesheet" href="./partner-cabinet.css">
+  <link rel="stylesheet" href="./admin-cabinet.css">
+  <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+  <script type="module" src="./admin-cabinet.mjs"></script>
+</head>
+<body class="admin-body">
+  <a class="skip" href="#admin-screen">К содержимому</a>
+  <div id="launch-screen" class="launch-screen" role="status" aria-live="polite" aria-label="Открываем пульт владельца">
+    <div class="launch-content"><span class="brand launch-brand" aria-hidden="true">RE</span>
+      <p class="launch-wordmark" aria-hidden="true">RE PROGRAM</p>
+      <p class="launch-progress">Открываем пульт владельца</p></div>
+    <div class="launch-help"><p>Если загрузка затянулась, закройте кабинет и откройте его новой кнопкой в боте.</p></div>
+  </div>
+  <div id="admin-cabinet" class="app admin-app">
+    <header class="admin-hero">
+      <div class="admin-wordmark"><span class="brand" aria-hidden="true">RE</span>
+        <div><p class="eyebrow">RE PROGRAM <span class="admin-mode">Владелец</span></p>
+          <h1>Пульт владельца</h1><p class="admin-hero-caption">RE AI и поддержка — под рукой.</p></div></div>
+    </header>
+    <div id="theme-bar" class="theme-bar" hidden>
+      <span class="theme-label">Тема</span>
+      <div id="theme-switcher" class="theme-switcher" role="group" aria-label="Тема пульта">
+        <button type="button" data-theme-value="light" aria-pressed="true">Светлая</button>
+        <button type="button" data-theme-value="dark" aria-pressed="false">Тёмная</button>
+        <button type="button" data-theme-value="system" aria-pressed="false">Система</button>
+      </div>
+    </div>
+    <p id="admin-notice" class="notice" role="status" aria-live="polite"></p>
+    <nav id="admin-navigation" class="admin-navigation" aria-label="Разделы пульта владельца" hidden></nav>
+    <main id="admin-screen" class="screen" tabindex="-1" aria-busy="true"><div class="card loading"><p>Проверяем доступ…</p></div></main>
+    <noscript><section class="card noscript"><h2>Пульт не открылся</h2><p>Для пульта нужен JavaScript. Откройте меню Telegram-бота.</p></section></noscript>
+    <footer class="footer"><span id="admin-session-status">Защищённая сессия</span><span data-release-version>RE Program</span></footer>
+  </div>
+</body>
+</html>

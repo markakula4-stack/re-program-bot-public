@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0f172a">
+  <title>RE Program · Кабинет партнёра</title>
+  <link rel="stylesheet" href="/assets/v1.4.0/partner-cabinet.css">
+  <script src="https://telegram.org/js/telegram-web-app.js?63" defer></script>
+  <script src="/assets/v1.4.0/partner-cabinet.js" defer></script>
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">RE Program · v1.4.0</p>
+        <h1>Кабинет партнёра</h1>
+      </div>
+      <span class="live-dot" aria-label="Защищённое соединение"></span>
+    </header>
+
+    <aside id="recovery-banner" class="banner" role="status" hidden>
+      Показана последняя сохранённая версия. Действия отключены.
+    </aside>
+
+    <nav class="tabs" aria-label="Разделы кабинета">
+      <button type="button" data-screen="home" aria-current="page">Обзор</button>
+      <button type="button" data-screen="profile">Профиль</button>
+      <button type="button" data-screen="offers">Офферы</button>
+      <button type="button" data-screen="applications">Заявки</button>
+      <button type="button" data-screen="results">Результаты</button>
+    </nav>
+
+    <section id="screen" class="screen" aria-busy="true" aria-live="polite">
+      <div class="skeleton tall"></div>
+      <div class="skeleton"></div>
+      <div class="skeleton"></div>
+    </section>
+
+    <p id="status" class="status" role="status" aria-live="polite">
+      Проверяем Telegram и загружаем ваши данные…
+    </p>
+  </main>
+  <noscript>Для кабинета нужен JavaScript внутри Telegram.</noscript>
+</body>
+</html>

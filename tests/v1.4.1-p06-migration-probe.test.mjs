@@ -1,0 +1,28 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+import {DatabaseSync} from 'node:sqlite';
+import {pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
+import {SqliteD1} from './helpers/v1.4.0-rebuild-sqlite.mjs';
+test('P06 exact native probe bundle applies the fixed migration batch once and preserves fictional users',async t=>{
+  const directory=fs.mkdtempSync(path.join(os.tmpdir(),'p06-probe-'));t.after(()=>fs.rmSync(directory,{recursive:true,force:true}));
+  const output=path.join(directory,'probe.mjs'),sha='a'.repeat(40);
+  const built=spawnSync(process.execPath,['scripts/v1.4.1-p06-build-probe.mjs',output],{env:{...process.env,GITHUB_SHA:sha},encoding:'utf8'});assert.equal(built.status,0,built.stderr);
+  const cfg=JSON.parse(fs.readFileSync(output+'.config.json')),fingerprint=createHash('sha256').update(JSON.stringify(cfg)).digest('hex');
+  const worker=(await import(pathToFileURL(output))).default,sqlite=new DatabaseSync(':memory:');sqlite.exec('PRAGMA foreign_keys=ON');t.after(()=>sqlite.close());
+  const binding=new SqliteD1(sqlite),env={DB:binding,PROBE_TOKEN:'p06-private-fictional-token-with-32-characters',PROBE_CANDIDATE_SHA:sha,PROBE_EXPIRES_AT:String(Math.floor(Date.now()/1000)+600)};
+  const invoke=async input=>{const response=await worker.fetch(new Request('https://probe.example/probe',{method:'POST',headers:{Authorization:'Bearer '+env.PROBE_TOKEN,'Content-Type':'application/json'},body:JSON.stringify({...input,expectedCompiledConfigSha256:fingerprint})}),env);return response.json();};
+  const call=async input=>{const result=await invoke(input);assert.equal(result.status,200,JSON.stringify(result));return result.result;};
+  const initial=await call({kind:'seed',index:0});for(let index=1;index<initial.batches;index++)await call({kind:'seed',index});
+  const before=await call({kind:'status'});assert.equal(before.phase,'accepted_base');assert.equal(before.canPrepare,true);
+  const prepared=await call({kind:'prepare'});assert.equal(prepared.addedMigrations,4);assert.equal(prepared.lease.revision,27);assert.equal(prepared.customerAccessActivated,false);
+  const after=await call({kind:'status'});assert.equal(after.phase,'prepared');assert.equal(after.lease.candidateSha,sha);assert.equal(after.p04Ready,true);
+  const audit=await call({kind:'audit'});assert.equal(audit.foreignKeyErrors,0);assert.equal(audit.guards,0);assert.equal(audit.fixtureUsers,4);
+  const repeat=await invoke({kind:'prepare'});assert.equal(repeat.status,500);assert.equal(repeat.result.error,'v141_release_prepare_baseline_mismatch');
+  assert.equal(sqlite.prepare('SELECT COUNT(*) n FROM users').get().n,4);
+  assert.equal(sqlite.prepare('PRAGMA integrity_check').get().integrity_check,'ok');
+});

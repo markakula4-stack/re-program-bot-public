@@ -1,0 +1,223 @@
+/* The owner remote inherits the ordinary cabinet's colour and type system. */
+.admin-body { background: var(--canvas-glow), var(--bg); background-attachment: fixed; }
+.admin-app { width: min(100%, 680px); }
+.admin-hero {
+  display: flex; align-items: center; min-height: 102px; margin-bottom: 12px;
+  padding: 18px; border: 1px solid var(--hero-line); border-radius: 24px;
+  background: var(--hero-surface); box-shadow: var(--shadow); color: var(--hero-ink);
+}
+.admin-wordmark { display: flex; align-items: center; gap: 13px; min-width: 0; }
+.admin-wordmark > div { min-width: 0; }
+.admin-wordmark .brand { width: 46px; height: 46px; border-radius: 16px; }
+.admin-wordmark h1 { color: var(--hero-ink); font-size: clamp(1.26rem, 5.1vw, 1.5rem); line-height: 1.2; }
+.admin-wordmark .eyebrow {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 6px;
+  color: var(--hero-ink); font-size: .6rem; letter-spacing: .09em;
+}
+.admin-hero-caption { color: var(--hero-ink); font-size: .76rem; margin-top: 6px; line-height: 1.4; }
+.admin-mode {
+  display: inline-flex; align-items: center; gap: 5px; padding: 4px 7px;
+  border: 1px solid var(--hero-line); border-radius: 7px; background: color-mix(in srgb, var(--card) 72%, transparent);
+  color: var(--hero-ink); font-size: .58rem; line-height: 1; letter-spacing: 0; font-weight: 650;
+}
+.admin-mode::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--success); }
+.admin-app .theme-bar { margin: 0 2px 14px; }
+.admin-navigation {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px;
+  margin: 0 0 18px; padding: 5px; border: 1px solid var(--line);
+  border-radius: 18px; background: var(--card); box-shadow: var(--shadow-raised);
+}
+.admin-navigation button {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  min-width: 0; min-height: 48px; padding: 10px; border: 1px solid transparent;
+  border-radius: 12px; background: transparent; color: var(--muted);
+  font-size: .86rem; font-weight: 650; line-height: 1.25; white-space: nowrap;
+}
+.admin-navigation button[aria-current="page"] {
+  background: transparent; border-color: var(--admin-selection-line); color: var(--on-accent); box-shadow: var(--selection-shadow);
+}
+.admin-navigation .nav-icon { display: grid; place-items: center; width: 19px; height: 19px; flex: 0 0 19px; }
+.admin-navigation svg { width: 19px; height: 19px; flex-shrink: 0; }
+.admin-app .screen { gap: 15px; }
+.admin-app .screen-head { margin: 0 2px 1px; }
+.admin-app h2 { font-size: 1.18rem; }
+.admin-app h3 { font-size: 1.02rem; }
+.admin-app .card { padding: 20px; border-radius: 24px; gap: 15px; }
+.admin-app .card > h3 + .muted { margin-top: -5px; }
+.admin-app .muted { font-size: .82rem; line-height: 1.55; }
+.admin-app .notice { font-size: .82rem; }
+.admin-app .button { min-height: 44px; padding: 10px 13px; font-size: .82rem; line-height: 1.35; }
+.admin-app .button.small { font-size: .77rem; padding: 9px 12px; }
+.admin-app .field { gap: 8px; font-size: .82rem; }
+.admin-app .field input, .admin-app .field textarea, .admin-app .field select { font-size: 1rem; }
+.admin-app .field textarea { min-height: 96px; }
+.admin-app .facts { font-size: .8rem; }
+.admin-app .fact { padding: 8px 0; gap: 12px; }
+.admin-control-card { gap: 14px; }
+.admin-control-card:has(.admin-ai-modes) { background: var(--profile-surface); border-color: var(--line-strong); box-shadow: var(--shadow-raised); }
+.admin-setting-description { color: var(--muted); font-size: .8rem; line-height: 1.55; }
+.admin-ai-modes {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px;
+  padding: 4px; border: 1px solid var(--line); border-radius: 14px; background: var(--field);
+}
+.admin-app .admin-ai-modes button {
+  display: flex; align-items: center; justify-content: center;
+  min-width: 0; min-height: 48px; padding: 8px 3px; border: 1px solid transparent;
+  border-radius: 10px; background: transparent; color: var(--muted);
+  font-size: clamp(.72rem, 2.9vw, .83rem); font-weight: 650; line-height: 1.25; text-align: center;
+  white-space: nowrap; word-break: normal; overflow-wrap: normal;
+}
+.admin-app .admin-ai-modes button[aria-pressed="true"] {
+  background: transparent; border-color: var(--admin-selection-line); color: var(--on-accent); box-shadow: var(--selection-shadow);
+}
+.admin-app .admin-ai-modes button:disabled[aria-pressed="true"] { opacity: 1; }
+.admin-switch-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 48px; cursor: pointer; }
+.admin-switch-row > :first-child { min-width: 0; }
+.admin-switch-row strong { font-size: .92rem; line-height: 1.4; overflow-wrap: normal; word-break: normal; }
+.admin-switch-row .admin-setting-description { margin-top: 5px; }
+.admin-switch { display: inline-flex; align-items: center; flex-shrink: 0; min-height: 44px; }
+.admin-switch-row input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none; position: relative; flex-shrink: 0;
+  width: 46px; height: 28px; min-height: 0; margin: 0; padding: 0;
+  border: 1px solid var(--line-strong); border-radius: 999px; background: var(--line-strong);
+  cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease;
+}
+.admin-switch-row input[type="checkbox"]::before {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px;
+  border-radius: 50%; background: #ffffff; box-shadow: 0 1px 3px rgb(0 0 0 / 15%);
+  transition: transform 150ms ease;
+}
+.admin-switch-row input[type="checkbox"]:checked { background: var(--accent); border-color: var(--accent); }
+.admin-switch-row input[type="checkbox"]:checked::before { transform: translateX(18px); }
+.admin-switch-row input[type="checkbox"]:disabled { opacity: .55; cursor: default; }
+.admin-app details { border-radius: 14px; }
+.admin-app details > summary {
+  display: flex; align-items: center; justify-content: space-between; min-height: 44px;
+  color: var(--muted); font-size: .82rem; font-weight: 650; cursor: pointer; list-style: none;
+}
+.admin-app details > summary::-webkit-details-marker { display: none; }
+.admin-app details > summary:focus-visible { outline: 3px solid var(--accent-ink); outline-offset: 3px; }
+.admin-app details > summary::after { content: "+"; color: var(--muted); font-size: 1.1rem; }
+.admin-app details[open] > summary::after { content: "−"; }
+.admin-app details > summary ~ * { margin-top: 13px; }
+.admin-confirm, .admin-send-preview {
+  display: grid; gap: 12px; padding: 15px; border: 1px solid var(--line-strong);
+  border-radius: 15px; background: var(--field);
+}
+.admin-confirm > h4, .admin-send-preview > h4 { margin: 0; font-size: .9rem; line-height: 1.35; }
+.admin-confirm .actions, .admin-send-preview .actions { gap: 8px; }
+.admin-confirm .actions .button, .admin-send-preview .actions .button { flex: 1 1 110px; }
+.admin-confirm textarea { min-height: 96px; }
+.admin-draft-warning { border-color: var(--line-strong); background: var(--soft); }
+.admin-list { display: grid; gap: 11px; }
+.admin-support-filters { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+.admin-support-filters::-webkit-scrollbar { display: none; }
+.admin-support-filters button {
+  flex: 0 0 auto; min-height: 44px; padding: 9px 13px; border: 1px solid var(--line);
+  border-radius: 999px; background: var(--card); color: var(--muted); font-size: .76rem; font-weight: 600;
+}
+.admin-support-filters button[aria-pressed="true"] { border-color: var(--line-strong); color: var(--accent-ink); background: var(--soft); }
+.admin-app .admin-ticket-card { gap: 9px; padding: 16px; }
+.admin-ticket-card > button, button.admin-ticket-card {
+  display: grid; gap: 8px; width: 100%; min-width: 0; text-align: left;
+  color: var(--text); background: var(--card); border: 1px solid var(--line); border-radius: 21px; box-shadow: var(--shadow);
+}
+.admin-ticket-card > button { padding: 15px; }
+.admin-ticket-card > button:hover, button.admin-ticket-card:hover { border-color: var(--line-strong); }
+button.admin-ticket-card { display: flex; align-items: center; justify-content: space-between; gap: 13px; }
+.admin-ticket-card-main { display: grid; gap: 6px; min-width: 0; flex: 1 1 auto; }
+.admin-ticket-card-main strong { font-size: .9rem; line-height: 1.4; overflow-wrap: anywhere; }
+button.admin-ticket-card > .badge { flex: 0 0 auto; max-width: 45%; white-space: normal; text-align: center; }
+.admin-ticket-card .actions { margin-top: 2px; }
+.admin-ticket-card .admin-row-meta { justify-content: space-between; }
+.admin-ticket-card .facts { font-size: .76rem; }
+.admin-ticket-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.admin-ticket-header { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px 12px; min-width: 0; }
+.admin-ticket-header > .button { grid-column: 1 / -1; justify-self: start; }
+.admin-ticket-header > :first-child { min-width: 0; }
+.admin-ticket-header h3 { min-width: 0; font-size: .93rem; line-height: 1.4; overflow-wrap: anywhere; }
+.admin-ticket-header > .badge { max-width: 150px; white-space: normal; text-align: center; }
+.admin-row-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+.admin-pagination { display: flex; align-items: center; justify-content: space-between; gap: 9px; }
+.admin-pagination .muted { font-size: .73rem; text-align: center; }
+.admin-ticket-thread { display: flex; flex-direction: column; gap: 12px; padding: 2px 0; }
+.admin-message {
+  display: grid; gap: 8px; align-self: flex-start; width: fit-content; max-width: 92%;
+  padding: 13px 15px; border: 1px solid var(--line); border-radius: 20px 20px 20px 6px;
+  background: var(--card); box-shadow: var(--shadow);
+}
+.admin-message p { color: var(--text); font-size: .88rem; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
+.admin-message a { font-size: .8rem; line-height: 1.5; }
+.admin-message-meta { color: var(--muted); font-size: .69rem; line-height: 1.4; }
+.admin-ticket-thread .admin-message[data-author="admin"] {
+  align-self: flex-end; border-color: var(--line-strong); border-radius: 20px 20px 6px 20px; background: var(--soft);
+}
+.admin-message .badge { width: fit-content; font-size: .66rem; }
+.admin-message .muted { font-size: .73rem; }
+/* A reply remains in normal document flow: it must never cover the conversation. */
+.admin-app .admin-reply-composer {
+  position: static; gap: 12px; padding: 18px; border-color: var(--line-strong);
+  background: var(--profile-surface); box-shadow: var(--shadow); scroll-margin-block: 20px;
+}
+.admin-reply-composer .field { font-size: .82rem; }
+.admin-reply-composer textarea {
+  width: 100%; min-height: 96px; max-height: 200px; resize: vertical; border: 1px solid var(--line-strong);
+  padding: 12px; border-radius: 12px; background: var(--field); color: var(--text);
+  font-size: 1rem; line-height: 1.5; scroll-margin-block: 20px;
+}
+.admin-reply-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: .7rem; color: var(--muted); }
+.admin-reply-actions { display: flex; align-items: center; justify-content: flex-end; gap: 9px; }
+.admin-reply-actions .admin-reply-meta { flex: 1 1 auto; font-size: .7rem; }
+.admin-reply-actions .button { flex: 0 0 auto; min-width: 120px; }
+.admin-send-preview p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.admin-send-preview .admin-preview-text { max-height: 180px; overflow-y: auto; color: var(--text); }
+p.admin-send-preview { max-height: 180px; overflow-y: auto; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--text); font-size: .88rem; line-height: 1.55; }
+.admin-remote-footer { display: flex; flex-wrap: wrap; gap: 7px 16px; color: var(--muted); font-size: .72rem; line-height: 1.5; }
+.admin-remote-footer p { font-size: .72rem; }
+.admin-ticket-actions { border-color: var(--line); }
+.admin-app .admin-banner { background: var(--card); border-color: var(--line); }
+.admin-app .loading { min-height: 150px; padding: 24px; }
+.admin-payment-card { min-width: 0; }
+.admin-payment-user, .admin-payment-count { color: var(--muted); font-size: .75rem; line-height: 1.5; }
+.admin-payment-detail .fact dd { min-width: 0; overflow-wrap: anywhere; }
+.admin-payment-detail .actions { margin-top: 15px; }
+.admin-payment-detail .actions .button { flex: 1 1 130px; }
+.admin-payment-card > .admin-confirm { scroll-margin-block: 20px; }
+.admin-app .footer { padding: 18px 2px 0; font-size: .69rem; }
+@media (max-width: 360px) {
+  .admin-app { padding-left: max(14px, env(safe-area-inset-left, 0px), var(--tg-content-safe-area-inset-left, 0px)); padding-right: max(14px, env(safe-area-inset-right, 0px), var(--tg-content-safe-area-inset-right, 0px)); }
+  .admin-hero { min-height: 98px; padding: 16px; }
+  .admin-wordmark { gap: 10px; }
+  .admin-wordmark .brand { width: 39px; height: 39px; border-radius: 13px; font-size: .9rem; }
+  .admin-wordmark h1 { font-size: 1.22rem; }
+  .admin-wordmark .eyebrow { gap: 6px; font-size: .55rem; }
+  .admin-mode { padding: 3px 5px; font-size: .55rem; }
+  .admin-hero-caption { font-size: .7rem; }
+  .admin-app .card { padding: 16px; }
+  .admin-navigation button { gap: 5px; padding: 9px 4px; font-size: .73rem; }
+  .admin-navigation .nav-icon, .admin-navigation svg { width: 16px; height: 16px; flex-basis: 16px; }
+  .admin-app .admin-ai-modes button { font-size: .72rem; }
+  .admin-confirm, .admin-send-preview { padding: 12px; }
+  .admin-message { max-width: 95%; padding: 12px 13px; }
+  .admin-pagination .button { padding: 9px; font-size: .73rem; }
+  .admin-ticket-header > .badge { max-width: 125px; font-size: .68rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .admin-switch-row input[type="checkbox"], .admin-switch-row input[type="checkbox"]::before { transition: none; }
+}
+
+/* Keep each icon and readable label inside its own ordinary navigation button. */
+.admin-app .admin-navigation { grid-template-columns: minmax(0, .82fr) minmax(0, 1.2fr) minmax(0, .98fr); }
+.admin-app .admin-navigation button { gap: 6px; padding: 10px 4px; }
+/* Give narrow-screen labels their own row without reducing the readable type. */
+@media (max-width: 340px) {
+  .admin-app .admin-navigation { grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr) minmax(0, .9fr); }
+  .admin-app .admin-navigation button {
+    display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; align-content: center;
+    gap: 5px; min-height: 62px; padding: 8px 4px; white-space: normal;
+  }
+  .admin-app .admin-navigation button > span:not(.nav-icon) { min-width: 0; max-width: 100%; white-space: nowrap; }
+}
+
+/* Keep the light owner palette while sharing the reference blue in dark mode. */
+.admin-navigation button::before, .admin-app .admin-ai-modes button::before { background: var(--admin-selection-surface); }

@@ -1,0 +1,7 @@
+{
+  "name": "re-program-cabinet-p08-dom-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "DOM simulation only; no browser or production dependency",
+  "devDependencies": { "linkedom": "0.18.12" }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "re-program-bot-p11-runtime-checks",
+  "private": true,
+  "dependencies": {
+    "esbuild": "0.25.12",
+    "playwright": "1.62.1"
+  }
+}

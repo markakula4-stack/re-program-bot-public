@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru" data-launch-state="loading" data-color-theme="light" data-theme-mode="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="light dark">
+  <title>Кабинет · RE Program</title>
+  <script src="./cabinet-theme-bootstrap.js"></script>
+  <link rel="stylesheet" href="./partner-cabinet.css">
+  <link rel="stylesheet" href="./subscription-view.css">
+  <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+  <script type="module" src="./partner-cabinet.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#screen">К содержимому</a>
+  <div id="launch-screen" class="launch-screen" role="status" aria-live="polite" aria-label="Открываем кабинет">
+    <div class="launch-content">
+      <span class="brand launch-brand" aria-hidden="true">RE</span>
+      <p class="launch-wordmark" aria-hidden="true">RE PROGRAM</p>
+      <p class="launch-progress">Открываем ваш кабинет</p>
+    </div>
+    <div class="launch-help">
+      <p>Если загрузка затянулась, вернитесь в бот и откройте кабинет снова.</p>
+      <a href="https://t.me/RE_Program_Support_Bot" target="_blank" rel="noopener noreferrer">Открыть поддержку</a>
+    </div>
+  </div>
+  <div id="cabinet" class="app">
+    <header class="hero">
+      <div class="hero-copy"><p class="eyebrow">RE PROGRAM</p><h1>Ваш кабинет</h1><p class="hero-caption">Профиль, офферы и ваши заявки.</p></div>
+      <svg class="hero-art" viewBox="0 0 140 150" fill="none" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="hero-paper" x1="45" y1="30" x2="109" y2="126" gradientUnits="userSpaceOnUse"><stop stop-color="white"/><stop offset="1" stop-color="#e7f0ff"/></linearGradient>
+          <linearGradient id="hero-blue" x1="41" y1="28" x2="110" y2="104" gradientUnits="userSpaceOnUse"><stop stop-color="#62adff"/><stop offset=".48" stop-color="#2878f2"/><stop offset="1" stop-color="#3554d7"/></linearGradient>
+          <linearGradient id="hero-edge" x1="43" y1="35" x2="109" y2="105" gradientUnits="userSpaceOnUse"><stop stop-color="#d2e7ff"/><stop offset="1" stop-color="#79afff"/></linearGradient>
+          <filter id="hero-shadow" x="-60%" y="-50%" width="230%" height="240%"><feDropShadow dx="0" dy="9" stdDeviation="6" flood-color="#376bd6" flood-opacity=".2"/></filter>
+        </defs>
+        <ellipse cx="75" cy="128" rx="48" ry="8" fill="#78a4e8" opacity=".15"/>
+        <g transform="rotate(10 81 81)" filter="url(#hero-shadow)"><rect x="43" y="43" width="70" height="78" rx="15" fill="url(#hero-paper)" stroke="white" stroke-width="1.5"/><path d="M59 63H96M59 75H85M59 99H97" stroke="#ccdcf6" stroke-width="5" stroke-linecap="round"/></g>
+        <g transform="rotate(-9 68 63)" filter="url(#hero-shadow)"><rect x="31" y="24" width="75" height="75" rx="19" fill="url(#hero-blue)" stroke="url(#hero-edge)" stroke-width="2"/><path d="M38 45V41C38 35 43 30 49 30H88" stroke="white" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/><text x="68.5" y="73" text-anchor="middle" fill="white" font-family="system-ui, sans-serif" font-size="32" font-weight="800" letter-spacing="-2">RE</text></g>
+        <circle cx="120" cy="31" r="5" fill="#93c8ff"/><circle cx="21" cy="99" r="4" fill="#aecfff"/><path d="M19 31v8m-4-4h8" stroke="#70a9ef" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </header>
+    <div id="theme-bar" class="theme-bar" hidden>
+      <span class="theme-label">Тема</span>
+      <div id="theme-switcher" class="theme-switcher" role="group" aria-label="Тема кабинета">
+        <button type="button" data-theme-value="light" aria-pressed="true">Светлая</button>
+        <button type="button" data-theme-value="dark" aria-pressed="false">Тёмная</button>
+        <button type="button" data-theme-value="system" aria-pressed="false">Система</button>
+      </div>
+    </div>
+    <div id="native-display" class="native-display" hidden>
+      <button id="native-fullscreen" type="button" class="button small" aria-pressed="false">На весь экран</button>
+      <p id="native-display-status" class="muted" role="status" aria-live="polite" hidden></p>
+    </div>
+    <p id="notice" class="notice" role="status" aria-live="polite"></p>
+    <nav id="navigation" class="navigation" aria-label="Разделы кабинета" hidden></nav>
+    <main id="screen" class="screen" tabindex="-1" aria-busy="true"><div class="card loading"><p>Подключаем кабинет…</p></div></main>
+    <noscript><section class="card noscript"><h2>Кабинет не открылся</h2><p>Для кабинета нужен JavaScript. Откройте меню Telegram-бота или поддержку.</p></section></noscript>
+    <footer class="footer"><a href="https://t.me/RE_Program_Support_Bot" target="_blank" rel="noopener noreferrer">Поддержка</a><span data-release-version>RE Program</span></footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "re-program-bot",
+  "main": "src/v1.3.6/worker-entrypoint.mjs",
+  "compatibility_date": "2026-08-01",
+  "keep_vars": true,
+  "vars": {
+    "RE_AI_OFFICIAL_WEB_ENABLED": "true",
+    "RE_AI_OFFICIAL_WEB_ADMIN_ONLY": "true",
+    "RE_AI_OFFICIAL_WEB_STALE_ENABLED": "false",
+    "PARTNER_BETA_ENABLED": "false",
+    "PARTNER_PRIVATE_OFFERS_ENABLED": "false",
+    "PARTNER_OFFER_SUBMISSIONS_ENABLED": "false",
+    "PARTNER_OFFER_PUBLIC_VISIBILITY_ENABLED": "false",
+    "PLAN_COMPATIBILITY_DUAL_READ_ENABLED": "false",
+    "PLAN_CANONICAL_READ_ENABLED": "false",
+    "DRAGON_PREVIEW_ENABLED": "true",
+    "DRAGON_PREVIEW_CHANNEL_ID": "@refferal_programm",
+    "DRAGON_PREVIEW_CHANNEL_URL": "https://t.me/refferal_programm",
+    "DRAGON_PREVIEW_PROGRAM_END_AT": "2027-01-01T00:00:00Z",
+    "DRAGON_PREVIEW_ANTI_ABUSE_RETENTION_DAYS": "180",
+    "DRAGON_PREVIEW_AI_DAILY_SUCCESS_LIMIT": "30",
+    "STARS_PAYMENTS_ENABLED": "false",
+    "STARS_REFUNDS_ENABLED": "false",
+    "STARS_RECONCILIATION_ENABLED": "false",
+    "STARS_ROLLOUT_MODE": "off",
+    "STARS_BILLING_MODE": "prepaid",
+    "STARS_PRICE_VERSION": "1",
+    "STARS_TERMS_REVISION": "2026-09-10.stars-v1",
+    "SUPPORT_BOT_USERNAME": "RE_Program_Support_Bot",
+    "PUBLIC_CHANNEL_LINK_ENABLED": "false"
+  },
+  "ai": {
+    "binding": "AI"
+  },
+  "workflows": [
+    {
+      "name": "re-program-dragon-preview",
+      "binding": "DRAGON_PREVIEW_WORKFLOW",
+      "class_name": "DragonPreviewWorkflow"
+    }
+  ],
+  "triggers": {
+    "crons": ["*/15 * * * *"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "re-program-db",
+      "database_id": "ccb1ed58-0665-46d3-a201-6f1a03e41a80"
+    }
+  ],
+  "secrets": {
+    "required": [
+      "BOT_TOKEN",
+      "WEBHOOK_SECRET",
+      "SETUP_KEY",
+      "ADMIN_ID",
+      "DRAGON_PREVIEW_ANTI_ABUSE_SECRET",
+      "DRAGON_PREVIEW_PROBE_SECRET",
+      "STARS_CANARY_PROBE_SECRET"
+    ]
+  }
+}
